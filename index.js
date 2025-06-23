@@ -1,4 +1,3 @@
-// Write your solution in this file!
 
 const cats = ["Milo", "Otis", "Garfield"];
 
