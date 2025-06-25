@@ -1,76 +1,32 @@
-
-const cats = ["Milo", "Otis", "Garfield"];
-
-
-function destructivelyAppendCat(name) {
-  cats.push(name);
-  
-}
-
-
-
-function destructivelyPrependCat(name) {
-  cats.unshift(name);
-  
-}
-
-
-function destructivelyRemoveLastCat() {
-  cats.pop();
-}
-
-function destructivelyRemoveFirstCat() {
-  cats.shift();
-}
-
-
-function appendCat(name) {
-  return [...cats, name];
-}
-
-function prependCat(name) {
-  return [name, ...cats];
-}
-
-function removeLastCat() {
-  return cats.slice(0, -1);
-}
-
-function removeFirstCat() {
-  return cats.slice(1);
-}
-
-
-///object practice
-
-const address = {
-  street: {
-    line1: "11 Broadway",
-    line2: "2nd Floor",
-  },
-  city: "New York",
-  state: "NY",
-  zipCode: "10004"
+// Employee object with name and streetAddress
+const employee = {
+  name: "Alice",
+  streetAddress: "123 Main St"
 };
 
-console.log(address)
+// Non-destructive update: returns a new object with updated key/value
+function updateEmployeeWithKeyAndValue(employee, key, value) {
+  return {
+    ...employee,
+    [key]: value
+  };
+}
 
-///
+// Destructive update: updates the original object
+function destructivelyUpdateEmployeeWithKeyAndValue(employee, key, value) {
+  employee[key] = value;
+  return employee;
+}
 
-const wednesdayMenu = {
-  cheesePlate: {
-    soft: "Brie",
-    semiSoft: "Fontina",
-    hard: "Provolone",
-  },
-  fries: "Sweet potato",
-  salad: "Southwestern",
-};
+// Non-destructive delete: returns a new object without the specified key
+function deleteFromEmployeeByKey(employee, key) {
+  const newEmployee = { ...employee };
+  delete newEmployee[key];
+  return newEmployee;
+}
 
-Object.keys(wednesdayMenu);
-
-console.log(wednesdayMenu);
-const cheesePlate=wednesdayMenu.cheesePlate;
-console.log(cheesePlate);
-
-Object.values(wednesdayMenu);
+// Destructive delete: removes the key from the original object
+function destructivelyDeleteFromEmployeeByKey(employee, key) {
+  delete employee[key];
+  return employee;
+}
